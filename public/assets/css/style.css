@@ -1,0 +1,134 @@
+/* Your previous custom CSS here */
+
+/* Override Bootstrap's container width */
+.table {
+    max-width: 100%;
+}
+
+/* Ensure full width for small screens */
+@media (max-width: 600px) {
+    .table {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* If you're still facing overflow issues, use the following */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Override any Bootstrap padding that may affect cell width */
+.table td,
+.table th {
+    padding: 0.5rem;
+}
+
+/* Ensure center alignment for table content */
+.table td,
+.table th {
+    text-align: center;
+}
+.thProg {
+    text-align: center;
+}
+
+/* Adjust checkbox size */
+.checkbox-xl .form-check-input {
+    transform: scale(1.3);
+    margin-top: 0;
+}
+
+/* Remove any unwanted margins on checkbox inputs */
+/* .form-check-input[type='checkbox'] {
+    margin-left: 0;
+} */
+
+/* Center-align the content within table cells and customize checkbox alignment */
+.table td {
+    text-align: center; /* Center-align text in table cells */
+    vertical-align: middle; /* Vertically center-align content */
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Reset any margin to avoid unwanted spacing */
+}
+
+.table td,
+.fixedw {
+    /* Remove any Bootstrap padding */
+    padding: 0 !important;
+    /* Add your custom styles for consistent width */
+    min-width: 50px !important; /* Adjust the width as needed */
+    max-width: 50px !important; /* Adjust the width as needed */
+    text-align: center !important; /* Center-align text in table cells */
+    vertical-align: middle !important; /* Vertically center-align content */
+}
+.w-15 {
+    width: 0.01%;
+}
+.mw-80 {
+    max-width: 80%;
+}
+
+/* 30 DNI */
+.lower-tables {
+    min-width: 1580px;
+    max-width: 93.9%;
+}
+/* 31 DNI */
+/* .lower-tables {
+    min-width: 1580px;
+    max-width: 91.2%;
+} */
+.thWeek {
+    word-break: break-all !important;
+    font-size: 170%;
+}
+.margin-bt-top {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 4px;
+}
+/* thplan */
+.planLicz {
+    min-width: 167px !important;
+}
+
+.inputEdit {
+    max-height: 30px !important;
+    margin: -3px;
+    margin-left: 0.5px;
+}
+/* #mainTable tbody:not(.lowerTbody) th:first-child,
+#mainTable tbody:not(.lowerTbody) td:first-child {
+    background-color: #8e9b90;
+} */
+
+/* .upperTbody th:nth-child(n + 2):nth-child(-n + 8),
+.upperTbody td:nth-child(n + 2):nth-child(-n + 8) {
+    background-color: #dce2bd;
+}
+
+.upperTbody th:nth-child(n + 9):nth-child(-n + 15),
+.upperTbody td:nth-child(n + 9):nth-child(-n + 15) {
+    background-color: #d4cdab;
+}
+.upperTbody th:nth-child(n + 16):nth-child(-n + 22),
+.upperTbody td:nth-child(n + 16):nth-child(-n + 22) {
+    background-color: #b6c4a2;
+}
+.upperTbody th:nth-child(n + 23):nth-child(-n + 29),
+.upperTbody td:nth-child(n + 23):nth-child(-n + 29) {
+    background-color: #93c0a4;
+}
+.upperTbody th:nth-child(n + 30):nth-child(-n + 32),
+.upperTbody td:nth-child(n + 30):nth-child(-n + 32) {
+    background-color: wheat;
+} */
+/* .currentday {
+    background-color: white !important;
+} */
