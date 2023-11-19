@@ -45,7 +45,7 @@ echo "<tr>";
   echo "<th scope='row' class='text-nowrap' id='countValues'> " . $date['month'] . " " . $date['mday'] . "</th>";
    for ($day = 1; $day <= $userDataDINMO; $day++) {
       $dayOfWeek = date('w', strtotime("$year-$month-$day"));
-      echo "<td>" . $day . "</td>";
+      echo "<td class='nod'>" . $day . "</td>";
     }
 echo "</tr>";
 ?>

@@ -103,32 +103,86 @@
     margin: -3px;
     margin-left: 0.5px;
 }
-/* #mainTable tbody:not(.lowerTbody) th:first-child,
-#mainTable tbody:not(.lowerTbody) td:first-child {
-    background-color: #8e9b90;
-} */
 
-/* .upperTbody th:nth-child(n + 2):nth-child(-n + 8),
+.nod {
+    font-weight: 550;
+}
+/* HABIT NAME PO LEWO */
+#mainTable {
+    border-color: #82888b;
+}
+#mainTable tbody:not(.lowerTbody) th:first-child,
+#mainTable tbody:not(.lowerTbody) td:first-child {
+    background-color: #f9fefc;
+}
+/* 1-7  1WEK*/
+
+.upperTbody th:nth-child(n + 2):nth-child(-n + 8),
 .upperTbody td:nth-child(n + 2):nth-child(-n + 8) {
-    background-color: #dce2bd;
+    background-color: #e1faee;
+}
+#upperThead tr th:nth-child(n + 2):nth-child(-n + 8) {
+    background-color: #c4f5dd;
 }
 
+/* 8-14  2WEK*/
 .upperTbody th:nth-child(n + 9):nth-child(-n + 15),
 .upperTbody td:nth-child(n + 9):nth-child(-n + 15) {
-    background-color: #d4cdab;
+    background-color: #dff8f9;
 }
+#upperThead tr th:nth-child(n + 9):nth-child(-n + 15) {
+    background-color: #c5f2f4;
+}
+
+/* 15-21  3WEK*/
 .upperTbody th:nth-child(n + 16):nth-child(-n + 22),
 .upperTbody td:nth-child(n + 16):nth-child(-n + 22) {
-    background-color: #b6c4a2;
+    /* background-color: #c7dbf6; */
+    background-color: #a8dfed;
 }
+#upperThead tr th:nth-child(n + 16):nth-child(-n + 22) {
+    /* background-color: #abc9f1; */
+    background-color: #8ed6e8;
+}
+
+/* 22-28  4WEK*/
+
 .upperTbody th:nth-child(n + 23):nth-child(-n + 29),
 .upperTbody td:nth-child(n + 23):nth-child(-n + 29) {
-    background-color: #93c0a4;
+    background-color: #75cde3;
 }
+#upperThead tr th:nth-child(n + 23):nth-child(-n + 29) {
+    background-color: #5fc5de;
+}
+
+/* //29-31 DEFAULT */
 .upperTbody th:nth-child(n + 30):nth-child(-n + 32),
 .upperTbody td:nth-child(n + 30):nth-child(-n + 32) {
-    background-color: wheat;
-} */
-/* .currentday {
-    background-color: white !important;
-} */
+    background-color: #f9fefc;
+}
+#upperThead tr th:nth-child(n + 30):nth-child(-n + 32) {
+    background-color: #edf7f3;
+}
+
+/* CHECKBOXY */
+.form-check-input:checked {
+    background-color: #646569 !important;
+}
+.male {
+    background-color: red !important;
+}
+.color20 {
+    background-color: #e2fadf !important;
+}
+.color2040 {
+    background-color: #d2fbce !important;
+}
+.color4060 {
+    background-color: #aff8a7 !important;
+}
+.color6080 {
+    background-color: #9df793 !important;
+}
+.color8010 {
+    background-color: #82f575 !important;
+}
