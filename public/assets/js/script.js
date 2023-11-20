@@ -46,6 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     };
+    const progressColorCh = function () {
+        // let z = document.querySelectorAll('color20');
+        // let computedStyle = window.getComputedStyle(z);
+        let backgroundColor = '#82f575';
+        var originalColor = tinycolor('#ff0000');
+        var newColor = originalColor.darken(25).toString();
+        console.log(newColor);
+        // console.log(backgroundColor);
+    };
+    progressColorCh();
     const progressColorChange = function () {
         let percent = [];
         for (let i = 1; i <= 7; i++) {
@@ -58,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
             switch (true) {
                 case x === 0: {
                     removeClass(progCell);
-
                     break;
                 }
                 case x <= 20:
@@ -82,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     progCell.classList.add('color8010');
                     break;
                 default:
-                    console.log('huj ci wdupe');
+                    console.log('cos jest zle');
             }
         }
         // console.log(typeof parseInt(percent[0]));
@@ -206,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         this.parentElement.textContent = newText;
                         updateName(taskID, newText);
                     } else {
-                        console.log('hujowo za krutkas');
+                        console.log('za krórtki lub za długi tekst');
                         this.parentElement.textContent = text;
                     }
                 });
