@@ -1,6 +1,6 @@
 <?php 
 
-echo "<thead id='lowerThead' class = 'thead-light'> ";
+echo "<thead id='lowerThead' class = ''> ";
 // echo "<tr class='hidden'>";
 // echo "<th scope='row' class='w-15 thProg '>Done</th>";
 //          for($i=1;$i<=30;$i++){

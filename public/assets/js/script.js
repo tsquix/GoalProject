@@ -24,77 +24,56 @@ document.addEventListener('DOMContentLoaded', function () {
                     incompleteCount--;
                 }
             }
-            tmp = (completeCount / tmp).toFixed(2) * 100 + '%';
+            let percentage = ((completeCount / total) * 100).toFixed(0);
+            let formattedPercentage = parseFloat(percentage) + '%';
+
             completeElement.innerText = completeCount;
             incompleteElement.innerText = incompleteCount;
-            progressPercent.innerText = tmp;
+            progressPercent.innerText = formattedPercentage;
         }
     };
     progressCounter(tableLength); //execute żeby przy załadowaniu strony zaaktualizować progress wzgledem danych z bazydanych
-
-    const removeClass = function (cell) {
-        const colorArr = [
-            'color20',
-            'color2040',
-            'color4060',
-            'color6080',
-            'color8010',
-        ];
-        for (let i = 0; i < colorArr.length; i++) {
-            if (cell.classList.contains(colorArr[i])) {
-                cell.classList.remove(colorArr[i]);
-            }
-        }
-    };
-    const progressColorCh = function () {
-        // let z = document.querySelectorAll('color20');
-        // let computedStyle = window.getComputedStyle(z);
-        let backgroundColor = '#82f575';
-        var originalColor = tinycolor('#ff0000');
-        var newColor = originalColor.darken(25).toString();
-        console.log(newColor);
-        // console.log(backgroundColor);
-    };
-    progressColorCh();
+    // const removeClass = function (cell) {
+    //     const colorArr = [
+    //         'color20',
+    //         'color2040',
+    //         'color4060',
+    //         'color6080',
+    //         'color8010',
+    //     ];
+    //     for (let i = 0; i < colorArr.length; i++) {
+    //         if (cell.classList.contains(colorArr[i])) {
+    //             cell.classList.remove(colorArr[i]);
+    //         }
+    //     }
+    // };
     const progressColorChange = function () {
+        let newColor;
+        let progCell = [];
         let percent = [];
-        for (let i = 1; i <= 7; i++) {
+
+        const totalToComplete =
+            (parseInt(document.querySelector('#incomplete1').textContent) +
+                parseInt(document.querySelector('#complete1').textContent)) *
+            10;
+        for (let i = 1; i <= userDataDINMO; i++) {
             percent[i - 1] = parseInt(
                 document.querySelector('#tdPercent' + i).textContent
             );
-            let progCell = document.querySelector('#tdPercent' + i);
-            let x = percent[i - 1];
-
-            switch (true) {
-                case x === 0: {
-                    removeClass(progCell);
-                    break;
+            progCell[i] = document.querySelector('#tdPercent' + i);
+        }
+        for (let k = 0; k < userDataDINMO; k++) {
+            for (let j = 1; j <= totalToComplete / 10; j++) {
+                if (percent[k] === 0) {
+                    progCell[k + 1].style.backgroundColor = '#edf7f3';
+                } else {
+                    let theColor = (percent[k] / totalToComplete) * 15;
+                    const originalColor = tinycolor('#e2fadf');
+                    newColor = originalColor.darken(1 + theColor).toString();
+                    progCell[k + 1].style.backgroundColor = newColor;
                 }
-                case x <= 20:
-                    removeClass(progCell);
-                    progCell.classList.add('color20');
-                    break;
-                case x > 20 && x < 40:
-                    removeClass(progCell);
-                    progCell.classList.add('color2040');
-                    break;
-                case x >= 40 && x < 60:
-                    removeClass(progCell);
-                    progCell.classList.add('color4060');
-                    break;
-                case x >= 60 && x < 80:
-                    removeClass(progCell);
-                    progCell.classList.add('color6080');
-                    break;
-                case x >= 80 && x <= 100:
-                    removeClass(progCell);
-                    progCell.classList.add('color8010');
-                    break;
-                default:
-                    console.log('cos jest zle');
             }
         }
-        // console.log(typeof parseInt(percent[0]));
     };
     progressColorChange();
     const idExtract = function (id) {

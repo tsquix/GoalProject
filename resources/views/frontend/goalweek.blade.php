@@ -10,14 +10,14 @@ if ($resultCheck) {
     if (mysqli_num_rows($resultCheck) > 0){
     for($x = 0; $x<=1; $x++){
     echo "
-            <table class='table table-info table-bordered table-container lower-tables '>
+            <table class='table  table-bordered table-container lower-tables '>
                 <thead>
                     <tr>
                         <th scope='col'>#</th>
-                        <th scope='col' class='col-2'>Week 1</th>
-                        <th scope='col' class='col-2'>Week 2</th>
-                        <th scope='col' class='col-2'>Week 3</th>
-                        <th scope='col' class='col-2'>Week 4</th>
+                        <th scope='col' class='col-2 week1'>Week 1</th>
+                        <th scope='col' class='col-2 week2'>Week 2</th>
+                        <th scope='col' class='col-2 week3'>Week 3</th>
+                        <th scope='col' class='col-2 week4'>Week 4</th>
                     </tr>
                 </thead>
                 <tbody><tr>

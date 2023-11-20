@@ -121,25 +121,30 @@
 .upperTbody td:nth-child(n + 2):nth-child(-n + 8) {
     background-color: #e1faee;
 }
+.lower-tables tr .week1,
 #upperThead tr th:nth-child(n + 2):nth-child(-n + 8) {
     background-color: #c4f5dd;
 }
 
 /* 8-14  2WEK*/
+
 .upperTbody th:nth-child(n + 9):nth-child(-n + 15),
 .upperTbody td:nth-child(n + 9):nth-child(-n + 15) {
     background-color: #dff8f9;
 }
+.lower-tables tr .week2,
 #upperThead tr th:nth-child(n + 9):nth-child(-n + 15) {
     background-color: #c5f2f4;
 }
 
 /* 15-21  3WEK*/
+
 .upperTbody th:nth-child(n + 16):nth-child(-n + 22),
 .upperTbody td:nth-child(n + 16):nth-child(-n + 22) {
     /* background-color: #c7dbf6; */
     background-color: #a8dfed;
 }
+.lower-tables tr .week3,
 #upperThead tr th:nth-child(n + 16):nth-child(-n + 22) {
     /* background-color: #abc9f1; */
     background-color: #8ed6e8;
@@ -151,6 +156,7 @@
 .upperTbody td:nth-child(n + 23):nth-child(-n + 29) {
     background-color: #75cde3;
 }
+.lower-tables tr .week4,
 #upperThead tr th:nth-child(n + 23):nth-child(-n + 29) {
     background-color: #5fc5de;
 }
