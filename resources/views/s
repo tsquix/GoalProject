@@ -1,0 +1,52 @@
+<x-nav-link>
+    <!-- Button -->
+    <button
+        x-on:click="open = !open"
+        :aria-expanded="open"
+        type="button"
+        class="flex items-center gap-2"
+    >
+        Options
+
+        <!-- Heroicon: chevron-down -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+        >
+            <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+            />
+        </svg>
+    </button>
+
+    <!-- Panel -->
+    <div
+        x-show="open"
+        x-transition:enter="transition-transform transform-origin-top duration-3"
+        x-transition:enter-start="scale-0"
+        x-transition:enter-end="scale-100"
+        x-transition:leave="transition-transform transform-origin-top duration-2"
+        x-transition:leave-start="scale-100"
+        x-transition:leave-end="scale-0"
+        x-on:click.outside="open = false"
+        class="bg-white shadow-md"
+    >
+        <a
+            href="#"
+            class="flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+        >
+            New Plan
+        </a>
+
+        <a
+            href="#"
+            class="flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500"
+        >
+            <span class="text-red-600">Delete Plan</span>
+        </a>
+    </div>
+</x-nav-link>

@@ -23,6 +23,7 @@ if ($resultCheck) {//sprawdza czy wynik cos zwraca
    
     //SPRAWDZA ILE DNI W MIESIACU JAK 30 USUWA VAL31
     while ($row = mysqli_fetch_array($result)) {
+        
         // $daysinMO = 31;
         // $default31 = 31; 
         // if ($daysinMO==30) {// sprawdza dni w miesiacu i w zaleznosci od tego czy jest 31 czy 30 to tyle wyswielta a jak jest 30 to wyrzuca val31

@@ -1,22 +1,22 @@
-'use sctrict';
+"use sctrict";
 //counts columns i 4th row
 
-document.addEventListener('DOMContentLoaded', function () {
-    const table = document.querySelector('#mainTable');
+document.addEventListener("DOMContentLoaded", function () {
+    const table = document.querySelector("#mainTable");
     //let tableLength = table.rows[3].cells.length - 1; // 30
     let tableLength = userDataDINMO; //BIERZE userdatadinmo z middleware i przez json w index.blade.php przekazuje tutaj
 
     const progressCounter = function (tableLen) {
         for (let j = 1; j <= tableLen; j++) {
-            let checkbox = document.querySelectorAll('.value' + j);
+            let checkbox = document.querySelectorAll(".value" + j);
             let total = checkbox.length; // ilość rzędów (checkboxów) w jednej kolumnie
             let tmp = total;
             let completeCount = 0;
             let incompleteCount = total;
 
-            let completeElement = document.querySelector('#complete' + j);
-            let incompleteElement = document.querySelector('#incomplete' + j);
-            let progressPercent = document.querySelector('#tdPercent' + j);
+            let completeElement = document.querySelector("#complete" + j);
+            let incompleteElement = document.querySelector("#incomplete" + j);
+            let progressPercent = document.querySelector("#tdPercent" + j);
 
             for (let i = 0; i < checkbox.length; i++) {
                 if (checkbox[i].checked) {
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     incompleteCount--;
                 }
             }
-            let percentage = ((completeCount / total) * 100).toFixed(0);
-            let formattedPercentage = parseFloat(percentage) + '%';
+            let percentage = (completeCount / total) * 100; // INFO
+            let formattedPercentage = parseInt(percentage) + "%";
 
             completeElement.innerText = completeCount;
             incompleteElement.innerText = incompleteCount;
@@ -53,22 +53,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let percent = [];
 
         const totalToComplete =
-            (parseInt(document.querySelector('#incomplete1').textContent) +
-                parseInt(document.querySelector('#complete1').textContent)) *
+            (parseInt(document.querySelector("#incomplete1").textContent) +
+                parseInt(document.querySelector("#complete1").textContent)) *
             10;
         for (let i = 1; i <= userDataDINMO; i++) {
             percent[i - 1] = parseInt(
-                document.querySelector('#tdPercent' + i).textContent
+                document.querySelector("#tdPercent" + i).textContent
             );
-            progCell[i] = document.querySelector('#tdPercent' + i);
+            progCell[i] = document.querySelector("#tdPercent" + i);
         }
         for (let k = 0; k < userDataDINMO; k++) {
             for (let j = 1; j <= totalToComplete / 10; j++) {
                 if (percent[k] === 0) {
-                    progCell[k + 1].style.backgroundColor = '#edf7f3';
+                    progCell[k + 1].style.backgroundColor = "#edf7f3";
                 } else {
                     let theColor = (percent[k] / totalToComplete) * 15;
-                    const originalColor = tinycolor('#e2fadf');
+                    const originalColor = tinycolor("#e2fadf");
                     newColor = originalColor.darken(1 + theColor).toString();
                     progCell[k + 1].style.backgroundColor = newColor;
                 }
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const idExtract = function (id) {
         let stringDivide = id;
         let stringLength = stringDivide.length;
-        let dotPosition = stringDivide.indexOf('.');
+        let dotPosition = stringDivide.indexOf(".");
         let planID = stringDivide.substring(0, dotPosition);
         let valID = stringDivide.substring(dotPosition + 1, stringLength);
         return { planID, valID };
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //update database handler and on change progresscounter exec
 
-    let goalId = parseInt(window.location.pathname.split('/').pop()); //TABLEUSERID
+    let goalId = parseInt(window.location.pathname.split("/").pop()); //TABLEUSERID
     if (isNaN(goalId)) {
         goalId = 1;
     }
@@ -98,14 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             progressCounter(tableLength);
             progressColorChange();
-            let checkboxID = $(this).attr('id');
+            let checkboxID = $(this).attr("id");
             let { planID, valID } = idExtract(checkboxID);
 
             if (this.checked) {
                 let status = 1;
                 $.ajax({
-                    type: 'POST',
-                    url: '/updateChecked',
+                    type: "POST",
+                    url: "/updateChecked",
                     data: {
                         _token: csrfToken,
                         planID: planID,
@@ -114,19 +114,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         goalId: goalId,
                     },
                     success: function (response) {
-                        console.log('Check event : ' + planID + ' ' + valID);
+                        console.log("Check event : " + planID + " " + valID);
                         console.log(response);
                         // Handle the response from the server if needed
                     },
                     error: function (error) {
-                        console.error('Error sending data: ' + error);
+                        console.error("Error sending data: " + error);
                     },
                 });
             } else if (!this.checked) {
                 let status = 0;
                 $.ajax({
-                    type: 'POST',
-                    url: '/updateChecked',
+                    type: "POST",
+                    url: "/updateChecked",
                     data: {
                         _token: csrfToken,
                         planID: planID,
@@ -135,10 +135,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         goalId: goalId,
                     },
                     success: function (response) {
-                        console.log('uncheck event: ' + planID + ' ' + valID);
+                        console.log("uncheck event: " + planID + " " + valID);
                     },
                     error: function (error) {
-                        console.error('Error sending data: ' + error);
+                        console.error("Error sending data: " + error);
                     },
                 });
             }
@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     const updateName = function (planId, newText) {
         $.ajax({
-            type: 'POST',
-            url: '/updateName',
+            type: "POST",
+            url: "/updateName",
             data: {
                 _token: csrfToken,
                 planId: planId,
@@ -160,41 +160,45 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
     const tasknameUpdate = function () {
-        let taskname = document.querySelectorAll('.task-name');
+        let taskname = document.querySelectorAll(".task-name");
         taskname.forEach(function (taskname) {
-            taskname.addEventListener('click', function () {
+            taskname.addEventListener("click", function () {
+                //TODO zmniejszyc padding inputu w przypadku dlugiego textu ucina go po bokach
                 const text = this.textContent;
-                let taskID = this.getAttribute('id');
+                let taskID = this.getAttribute("id");
                 console.log(taskID);
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.classList.add('form-control', 'inputEdit');
+                const input = document.createElement("input");
+                input.type = "text";
+                input.spellcheck = false;
+                input.classList.add("form-control", "inputEdit");
                 // input.setAttribute('id', 'validationFormCheck1');
-                input.ariaLabel = 'Habit name';
+                input.ariaLabel = "Habit name";
                 input.value = text;
 
-                this.textContent = '';
+                this.textContent = "";
                 this.appendChild(input);
                 input.focus();
                 let newText;
-                const isEmpty = str => !str.trim().length;
-                input.addEventListener('keydown', function (event) {
-                    if (event.key === 'Escape' || event.key === 'Enter')
+                // FIXME da sie ustawic input pusty  trzeba jakos poklikac dziwnie xd, po f5 dziala normalnie - resetuje sie  do poprzedniego name
+
+                const isEmpty = (str) => !str.trim().length;
+                input.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape" || event.key === "Enter")
                         input.blur();
                 });
-                input.addEventListener('blur', function () {
+                input.addEventListener("blur", function () {
                     newText = input.value;
                     //PODSTAwowa walidacja//TODO POLEPSZYC WALIDACJE I WYSWIETLIC KOMUNIKAT W PRZYPADKU CHUJOWEGO INPUTU
                     if (
                         newText.length > 2 &&
                         newText.length < 20 &&
-                        newText !== '' &&
+                        newText !== "" &&
                         !isEmpty(newText)
                     ) {
                         this.parentElement.textContent = newText;
                         updateName(taskID, newText);
                     } else {
-                        console.log('za krórtki lub za długi tekst');
+                        console.log("za krórtki lub za długi tekst");
                         this.parentElement.textContent = text;
                     }
                 });

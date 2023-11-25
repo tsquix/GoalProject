@@ -192,3 +192,13 @@
 .color8010 {
     background-color: #82f575 !important;
 }
+
+.hidden {
+    display: none;
+}
+.nohover {
+    border: none !important;
+    transition-property: none !important;
+    transition-timing-function: initial !important;
+    transition-duration: initial !important;
+}
