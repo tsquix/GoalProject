@@ -33,7 +33,7 @@
                                 <!-- Dropdown Content Goes Here //FIXME -->
                                 <div class="py-1">
                                     <div class="block px-4 py-2 text-sm text-gray-700 nohover">
-                                                    {{ __('Add New') }}
+                                                    {{ __('Add new plan') }}
                                                 </div>
                                     <div class="block px-4 py-2 text-sm text-red-500 nohover">
                                                     {{ __('Delete plan') }}

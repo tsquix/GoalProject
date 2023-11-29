@@ -32,7 +32,8 @@ if ($resultCheck) {//sprawdza czy wynik cos zwraca
         //     }
             
         //wyswietla po lewo plan(2-7)
-        echo "<tr class='trUpper'>";
+       
+        echo "<tr class='trUpper'> ";
       echo "<th scope='row' class='w-15 text-nowrap planLicz task-name current-day' id='plan" . $j . "'>" . $row['plan' . $j] . "</th>";
        
         //wyswietla checkboxy nadaja im id=plan(j)val(i) 
@@ -46,9 +47,15 @@ if ($resultCheck) {//sprawdza czy wynik cos zwraca
 "; 
         }
     }
-}}}
-else{}//TODO jak nie masz tabeli redirect do create view
-echo "</tr></tbody>";
+}}
+else {
+        header("Location: /dashboard");
+        exit(); // Make sure to exit after sending the header
+    }
+}
+
+echo "</tr></tbody>";//TODO jak nie masz tabeli redirect do create view
+
 
 mysqli_close($con);
 ?>

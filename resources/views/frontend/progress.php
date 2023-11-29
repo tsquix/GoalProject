@@ -1,5 +1,6 @@
 <?php 
-
+// if ($resultCheck) {//sprawdza czy wynik cos zwraca
+//     if (mysqli_num_rows($resultCheck) > 0) {
 echo "<thead id='lowerThead' class = ''> ";
 // echo "<tr class='hidden'>";
 // echo "<th scope='row' class='w-15 thProg '>Done</th>";
@@ -29,4 +30,5 @@ echo "<tbody class='lowerTbody'><th scope='row-2' class=' thProg'> Complete</th>
          echo "<td class='tdProg fixedw' id='incomplete".$i."'>0</td>";
          }
          echo "</tr>";
+        
 ?>

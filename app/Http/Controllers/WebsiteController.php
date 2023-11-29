@@ -12,9 +12,9 @@ class WebsiteController extends Controller
     }
 
     public function showGoal(Request $request, $id = 1)
-{
-    return view('frontend.index', ['id' => $id]);
-}
+    {
+        return view('frontend.index', ['id' => $id]);
+    }
 
    public function updateChecked(Request $request) {
    
@@ -69,14 +69,14 @@ class WebsiteController extends Controller
 
     public function newTable(Request $request) {
     if ($request->has('action') && $request->input('action') === 'call_this') {
-       // $user_id = auth()->id();
+        $user_id = auth()->id();
         // Sprawdzanie ile użytkownik ma tabel, by nadać userTableID
         $tableCount = DB::table('userstable')
             ->where('userID', $user_id)
             ->count();
         // Jeśli ma 0 tabel, to userTableID = 1 w inaczej iteruj
-        $userTableID = $tableCount > 0 ? $tableCount + 1 : 1;
-
+        $userTableID = $tableCount > 0 ? $tableCount + 1 : 1; //TODO FIXME  jak user ma tabele 1 2 3 i sie usunie tabele 2 to zostanie nastepnie utworzona tabela nr 3 poraz kolejny
+        
         $queries = [];
         $planxIDs = [];
         $ExamplePlanNames = ['wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care'];
@@ -93,7 +93,6 @@ class WebsiteController extends Controller
         $planWS = ['planwek', 'planspec']; 
         // PRZYKLADOWY SHIT
             $ExamplePlanNameswek = ['wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care' ];
-            ////INSERT PLANWEK PLANSPEC //TODO 
             for ($x = 0; $x <= 1; $x++){
             for ($i = 1; $i <= 5; $i++) //INFO: planspec/wek 5 ma ... puste po to warunki
             {
