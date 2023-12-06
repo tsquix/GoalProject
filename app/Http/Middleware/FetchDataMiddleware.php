@@ -22,20 +22,27 @@ class FetchDataMiddleware
         \View::share('plan_id', $plan_id);
 
         // Pobierz dane z bazy danych
-        $userDataDINMOfetch = DB::table('userstable')
+        $userDataDINMO = DB::table('userstable')
             ->where('userID', $user_id)
             ->where('userTableID', $plan_id)
-            ->first();
+            ->value('daysInMo');
+        $planQuant = DB::table('userstable')
+            ->where('userID', $user_id)
+            ->where('userTableID', $plan_id)
+            ->value('planQuant');
 
         // Check if $userDataNotReadyToUse is not null before accessing daysInMo
-        if ($userDataDINMOfetch) {
-            $userDataDINMO = $userDataDINMOfetch->daysInMo;
-
-            // Przekaż dane do widoków
+        if ($userDataDINMO) {
             \View::share('userDataDINMO', $userDataDINMO);
         } else {
             // Handle the case where user data is not found
             \View::share('userDataDINMO', null);
+        }
+        if ($planQuant) {
+            \View::share('planQuant', $planQuant);
+        } else {
+            // Handle the case where user data is not found
+            \View::share('planQuant', null);
         }
 
         return $next($request);

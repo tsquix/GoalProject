@@ -67,7 +67,9 @@
     text-align: center !important; /* Center-align text in table cells */
     vertical-align: middle !important; /* Vertically center-align content */
 }
+
 .w-15 {
+    /* lower width for main and lower table first col */
     width: 0.01%;
 }
 .mw-80 {

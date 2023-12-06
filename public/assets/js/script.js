@@ -205,5 +205,50 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     };
+    const addNewPlan = function () {
+        console.log(planQuant);
+
+        const btn = document.querySelector("#navAddPlan");
+        const mainTb = document.querySelector(".upperTbody");
+        btn.addEventListener("click", function () {
+            //TODO append oncl
+            let tr = document.createElement("tr");
+            let th = document.createElement("th");
+            let td = document.createElement("td");
+            let div = document.createElement("div");
+            let input = document.createElement("input");
+            //
+            tr.classList.add("trUpper");
+
+            th.setAttribute("scope", "col");
+            th.classList.add("w-15", "text-nowrap", "planLicz", "task-name");
+            th.innerText = "testowy th";
+            //td.classList.add("current-day");
+
+            div.classList.add("form-check", "checkbox-xl");
+
+            input.classList.add("form-check-input");
+            input.setAttribute("type", "checkbox");
+
+            mainTb.appendChild(tr);
+            tr.appendChild(th);
+
+            for (let i = 0; i < 30; i++) {
+                let td = document.createElement("td");
+                let div = document.createElement("div");
+                let input = document.createElement("input");
+
+                div.classList.add("form-check", "checkbox-xl");
+
+                input.classList.add("form-check-input");
+                input.setAttribute("type", "checkbox");
+
+                tr.appendChild(td);
+                td.appendChild(div);
+                div.appendChild(input);
+            }
+        });
+    };
+    addNewPlan();
     tasknameUpdate();
 });

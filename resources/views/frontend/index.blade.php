@@ -43,6 +43,8 @@
       <script>
     var csrfToken = "{{ csrf_token() }}";
     var userDataDINMO = {!! json_encode($userDataDINMO) !!};
+    var planQuant = {!! json_encode($planQuant) !!};
+   
 </script>
       
 <script src="{{ asset('assets/js/script.js') }}"></script> 
