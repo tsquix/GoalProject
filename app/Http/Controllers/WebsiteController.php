@@ -60,7 +60,7 @@ class WebsiteController extends Controller
     return 'Invalid data'; // Obsłuż inne przypadki błędów
 }
  
-         public function updateName(Request $request){//FIXME zbieżność nazw $id
+         public function updateName(Request $request){//FIXME INFO nie wiem zbieżność nazw $id
         $id = $request->route('id', 1);
          if ($request->has('planId') && $request->has('newText')) {
             $user_id = auth()->id();
@@ -68,7 +68,7 @@ class WebsiteController extends Controller
             $newText = $request->input('newText');
             $id = $request->input('goalId');
             $queryUpdate = "UPDATE $plan_Id SET $plan_Id = '$newText' WHERE userTableID = $id and user_id = $user_id";
-            //OBSŁUGA PLANSPEC PLANWEK majace kolumny oprocz planwek planspec : planwek1a/b/c...
+            //OBSŁUGA PLANSPEC/PLANWEK majace kolumny oprocz planwek planspec : planwek1a/b/c...
             if(str_ends_with($plan_Id, 'a')){
                 $trimmed = rtrim($plan_Id, 'a');
                 $queryUpdate = "UPDATE $trimmed SET $plan_Id = '$newText' WHERE userTableID = $id AND user_id = $user_id";
@@ -95,8 +95,22 @@ class WebsiteController extends Controller
         $tableCount = DB::table('userstable')
             ->where('userID', $user_id)
             ->count();
+          
         // Jeśli ma 0 tabel, to userTableID = 1 w inaczej iteruj
-        $userTableID = $tableCount > 0 ? $tableCount + 1 : 1; //TODO FIXME  jak user ma tabele 1 2 3 i sie usunie tabele 2 to zostanie nastepnie utworzona tabela nr 3 poraz kolejny
+        $userTableID = $tableCount > 0 ? $tableCount + 1 : 1;
+        
+        $userTableIDCheck = DB::table('userstable')
+            ->where('userID', $user_id)
+            ->where('userTableID', $userTableID)
+            ->exists();
+
+        while($userTableIDCheck){
+            $userTableID++;
+            $userTableIDCheck = DB::table('userstable')
+            ->where('userID', $user_id)
+            ->where('userTableID', $userTableID)
+            ->exists();
+        }
         
         $queries = [];
         $planxIDs = [];
@@ -112,38 +126,38 @@ class WebsiteController extends Controller
             $planxIDs["plan$i"] = $planxID;
         }
         $planWS = ['planwek', 'planspec']; 
-        // PRZYKLADOWY SHIT
+        // PRZYKLADOWY SHIT DATA
             $ExamplePlanNameswek = ['wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care' ];
             for ($x = 0; $x <= 1; $x++){
-            for ($i = 1; $i <= 5; $i++) //INFO: planspec/wek 5 ma ... puste po to warunki
-            {
-                if($i == 5)
+                for ($i = 1; $i <= 5; $i++) //INFO: planspec/wek 5 ma ... puste - po to warunki
                 {
-                    $z = ($i-1);
-                    $queryNewWS = "INSERT INTO `".$planWS[$x].$i."` (`userTableID`, `user_id`, `".$planWS[$x].$i."`, `".$planWS[$x].$i."a`, `".$planWS[$x].$i."b`, `".$planWS[$x].$i."c`, `val1`, `val2`, `val3`, `val4`) 
-                    VALUES ('$userTableID', '$user_id', ' ... ', ' ... ', ' ... ', ' ... ', '', '', '', '')";
-                }
-                else
-                {
-                $z = ($i-1);
-                    $queryNewWS = "INSERT INTO `".$planWS[$x].$i."` (`userTableID`, `user_id`, `".$planWS[$x].$i."`, `".$planWS[$x].$i."a`, `".$planWS[$x].$i."b`, `".$planWS[$x].$i."c`, `val1`, `val2`, `val3`, `val4`) 
-                VALUES ('$userTableID', '$user_id', '".$ExamplePlanNameswek[$z]."', '".$ExamplePlanNameswek[$z+5]."', '".$ExamplePlanNameswek[$z+10]."', '".$ExamplePlanNameswek[$z+15]."', '', '', '', '')";
-                }
-                if($x == 0)
+                    if($i == 5)
                     {
-                        $queries2[$i] = $queryNewWS;
-                        DB::statement($queries2[$i]);
-                        $planxID2 = DB::getPdo()->lastInsertId();
-                        $planxIDs2["planwek$i"] = $planxID2;
+                        $z = ($i-1);
+                        $queryNewWS = "INSERT INTO `".$planWS[$x].$i."` (`userTableID`, `user_id`, `".$planWS[$x].$i."`, `".$planWS[$x].$i."a`, `".$planWS[$x].$i."b`, `".$planWS[$x].$i."c`, `val1`, `val2`, `val3`, `val4`) 
+                        VALUES ('$userTableID', '$user_id', ' ... ', ' ... ', ' ... ', ' ... ', '', '', '', '')";
                     }
-                if($x == 1)
-                {
-                    $queries3[$i] = $queryNewWS;
-                    DB::statement($queries3[$i]);
-                    $planxID3 = DB::getPdo()->lastInsertId();
-                    $planxIDs3["planspec$i"] = $planxID3;
-                }
-            }  
+                    else
+                    {
+                    $z = ($i-1);
+                        $queryNewWS = "INSERT INTO `".$planWS[$x].$i."` (`userTableID`, `user_id`, `".$planWS[$x].$i."`, `".$planWS[$x].$i."a`, `".$planWS[$x].$i."b`, `".$planWS[$x].$i."c`, `val1`, `val2`, `val3`, `val4`) 
+                    VALUES ('$userTableID', '$user_id', '".$ExamplePlanNameswek[$z]."', '".$ExamplePlanNameswek[$z+5]."', '".$ExamplePlanNameswek[$z+10]."', '".$ExamplePlanNameswek[$z+15]."', '', '', '', '')";
+                    }
+                    if($x == 0)
+                        {
+                            $queries2[$i] = $queryNewWS;
+                            DB::statement($queries2[$i]);
+                            $planxID2 = DB::getPdo()->lastInsertId();
+                            $planxIDs2["planwek$i"] = $planxID2;
+                        }
+                    if($x == 1)
+                    {
+                        $queries3[$i] = $queryNewWS;
+                        DB::statement($queries3[$i]);
+                        $planxID3 = DB::getPdo()->lastInsertId();
+                        $planxIDs3["planspec$i"] = $planxID3;
+                    }
+                }  
         }
         //INSERT DO USERTABLE
         $queryUserstableNT = "INSERT INTO `userstable` 

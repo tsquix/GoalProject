@@ -19,8 +19,26 @@ if ($resultCheck) {//sprawdza czy wynik cos zwraca
     WHERE ut.userTableID = $id
     AND ut.userID = $user_id";
     $result = mysqli_query($con, $query);
-    
    
+        // $x = 1; //INFO USER PLAN DELETE
+        //     while ($x < 11) {
+        //         $deleteQuery = "DELETE FROM `plan{$x}` WHERE user_id = 2";
+        //         mysqli_query($con, $deleteQuery);
+        //         $x++;
+        //     }
+        // $x = 1; //INFO USER PLANspec DELETE
+        //  while ($x < 6) {
+        //    $deleteQuery = "DELETE FROM `planspec{$x}` WHERE user_id = 2";
+        // mysqli_query($con, $deleteQuery);
+        //    $x++;
+        // }
+        // $x = 1; //INFO USER PLANwek DELETE
+        //  while ($x < 6) {
+        //    $deleteQuery = "DELETE FROM `planwek{$x}` WHERE user_id = 2";
+        // mysqli_query($con, $deleteQuery);
+        //    $x++;
+        // }
+
     //SPRAWDZA ILE DNI W MIESIACU JAK 30 USUWA VAL31
     while ($row = mysqli_fetch_array($result)) {
         
@@ -57,7 +75,7 @@ else {
 
 echo "</tr</tbody>";// INFO to th border none oddziela main tabele od progresu
 // echo "</tr><th style='border:none;' id='spacingTh'> </tbody>";// INFO to th border none oddziela main tabele od progresu
-//TODO jak nie masz tabeli redirect do create view
+
 
 
 mysqli_close($con);

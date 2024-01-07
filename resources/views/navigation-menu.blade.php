@@ -30,7 +30,7 @@
                             </svg>
 
                             <div x-show="open" @click.away="open = false" class="absolute origin-top left-0 w-48 bg-white rounded-md shadow-lg" style="top: 4.1rem; z-index: 100; left: -2rem;">
-                                <!-- //FIXME -->
+                                <!-- //FIXME odstęp displayu zmniejszyc -->
                                 <div class="py-1">
                                     <div class="block px-4 py-2 text-sm text-gray-700 nohover" id="navAddPlan">
                                                     {{ __('Add new plan') }}

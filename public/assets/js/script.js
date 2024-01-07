@@ -214,7 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const mainTb = document.querySelector(".upperTbody");
         btn.addEventListener("click", function () {
             if (planQuant < 10) {
-                //TODO append oncl
                 let tr = document.createElement("tr");
                 let th = document.createElement("th");
                 let td = document.createElement("td");
@@ -222,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let input = document.createElement("input");
                 //
                 tr.classList.add("trUpper");
-                th.setAttribute("scope", "col"); //TODO dodac id
+                th.setAttribute("scope", "col");
                 th.classList.add(
                     "w-15",
                     "text-nowrap",
