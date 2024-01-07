@@ -30,7 +30,7 @@ echo "<div class='table-container container-fluid'>
 // echo "<thead id='upperThead' class='thead-light' style='position: sticky; top: 0; z-index: 1;'><tr>
 
 echo "<thead id='upperThead' class='' style='position: sticky; top: 0; z-index: 1;'><tr>
-<th scope='col'" . $date['weekday'] . "</th>";
+<th scope='col'>" . $date['weekday'] . "</th>";
 
 //wyswietl numery dni tygodnia
 for ($day = 1; $day <= $userDataDINMO; $day++) {

@@ -34,20 +34,18 @@ if ($resultCheck) {//sprawdza czy wynik cos zwraca
         //wyswietla po lewo plan(2-7)
        
         echo "<tr class='trUpper'> ";
-      echo "<th scope='row' class='w-15 text-nowrap planLicz task-name' id='plan" . $j . "'>" . $row['plan' . $j] . "</th>";
+        echo "<th scope='row' class='w-15 text-nowrap planLicz task-name' id='plan" . $j . "'>" . $row['plan' . $j] . "</th>";
        
         //wyswietla checkboxy nadaja im id=plan(j)val(i) 
             //<td style='position: sticky; left: 0;' class='current-day'>//INFO wyrzucam sticky left 0 nie wiem po co to bylo
         for ($i = 1; $i <= $userDataDINMO; $i++) {
             echo "
-                <td >
-    <div class='form-check checkbox-xl'>
-        <input class='form-check-input value" . $i . "' type='checkbox' id='plan" . $j . ".val" . $i . "' " . $row['val' . $i] . ">
-    </div>
-</td>
-
-
-"; 
+                <td>
+                    <div class='form-check checkbox-xl'>
+                        <input class='form-check-input value" . $i . "' type='checkbox' id='plan" . $j . ".val" . $i . "' " . $row['val' . $i] . ">
+                    </div>
+                </td>
+                "; 
         }
     }
 }}

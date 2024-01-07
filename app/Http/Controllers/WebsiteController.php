@@ -16,6 +16,27 @@ class WebsiteController extends Controller
         return view('frontend.index', ['id' => $id]);
     }
 
+    public function planQuantAdj(Request $request){
+        $id = $request->route('id', 1);
+        $user_id = auth()->id();//INFO jak wyrzuce ta linijke to wywala blad
+        $planQuant = $request->input('planQuant');
+        $goalid = $request->input('goalId');
+        $addPlan = $request->input('addPlan');
+        $removePlan = $request->input('removePlan');
+
+        if($addPlan){
+             $queryPlanQuantAdjAdd = "UPDATE userstable SET planQuant = '$planQuant' WHERE userID = '$user_id' AND userTableID = '$goalid'";
+            DB::statement($queryPlanQuantAdjAdd);
+            return 'dodano planQ: '.+$planQuant;
+        }
+        elseif($removePlan){
+            $queryPlanQuantAdjRem = "UPDATE userstable SET planQuant = '$planQuant' WHERE userID = '$user_id' AND userTableID = '$goalid'";
+            DB::statement($queryPlanQuantAdjRem);
+            return 'usunieto planQ: '.+$planQuant;
+        }
+    }
+
+
    public function updateChecked(Request $request) {
    
     $id = $request->route('id', 1); // Pobranie parametru 'id' z URL lub ustawienie domyślnej wartości 1 dla kontrolera dla goaldata jest przesyłany ajaxem
@@ -27,12 +48,12 @@ class WebsiteController extends Controller
         $goalid = $request->input('goalId');
 
         if ($status === '1') {
-            $query = "UPDATE $planID SET $valID = 'checked' WHERE userTableID = $goalid and user_id = $user_id";
-            DB::statement($query);
+            $queryUpdateChecked = "UPDATE $planID SET $valID = 'checked' WHERE userTableID = $goalid and user_id = $user_id";
+            DB::statement($queryUpdateChecked);
            return ['planID' => $planID, 'valID' => $valID, 'goalid' => $goalid, 'user_id' => $user_id];
         } elseif ($status === '0') {
-            $query = "UPDATE $planID SET $valID = '' WHERE userTableID = $goalid and user_id = $user_id";
-            DB::statement($query);
+            $queryUpdateChecked = "UPDATE $planID SET $valID = '' WHERE userTableID = $goalid and user_id = $user_id";
+            DB::statement($queryUpdateChecked);
             return 'usunięte';
         }
     }

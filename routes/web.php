@@ -40,4 +40,5 @@ Route::middleware([
 Route::post('/updateChecked', [WebsiteController::class, 'updateChecked'])->middleware('web');
 Route::post('/updateName', [WebsiteController::class, 'updateName'])->middleware('web');
 Route::post('/newTable', [WebsiteController::class, 'newTable'])->middleware('web');
+Route::post('/planQuantAdj', [WebsiteController::class, 'planQuantAdj'])->middleware('web');
 

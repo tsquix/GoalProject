@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     $(document).ready(function () {
-        $('input[type="checkbox"]').change(function () {
+        $(document).on("change", 'input[type="checkbox"]', function () {
             // const inputCheckbox = document.querySelector('input[name=checkbox]');
 
             progressCounter(tableLength);
@@ -159,96 +159,165 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     };
+    function taskNameChg() {
+        const text = this.textContent;
+        let taskID = this.getAttribute("id");
+        console.log(taskID);
+        const input = document.createElement("input");
+        input.type = "text";
+        input.spellcheck = false;
+        input.classList.add("form-control", "inputEdit");
+        // input.setAttribute('id', 'validationFormCheck1');
+        input.ariaLabel = "Habit name";
+        input.value = text;
+
+        this.textContent = "";
+        this.appendChild(input);
+        input.focus();
+        let newText;
+        // FIXME da sie ustawic input pusty  trzeba jakos poklikac dziwnie xd, po f5 dziala normalnie - resetuje sie  do poprzedniego name
+
+        const isEmpty = (str) => !str.trim().length;
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" || event.key === "Enter") input.blur();
+        });
+        input.addEventListener("blur", function () {
+            newText = input.value;
+            //PODSTAwowa walidacja//TODO POLEPSZYC WALIDACJE I WYSWIETLIC KOMUNIKAT W PRZYPADKU CHUJOWEGO INPUTU
+            if (
+                newText.length > 2 &&
+                newText.length < 20 &&
+                newText !== "" &&
+                !isEmpty(newText)
+            ) {
+                this.parentElement.textContent = newText;
+                updateName(taskID, newText);
+            } else {
+                console.log("za krórtki lub za długi tekst");
+                this.parentElement.textContent = text;
+            }
+        });
+    }
     const tasknameUpdate = function () {
-        let taskname = document.querySelectorAll(".task-name");
-        taskname.forEach(function (taskname) {
-            taskname.addEventListener("click", function () {
-                //TODO zmniejszyc padding inputu w przypadku dlugiego textu ucina go po bokach
-                const text = this.textContent;
-                let taskID = this.getAttribute("id");
-                console.log(taskID);
-                const input = document.createElement("input");
-                input.type = "text";
-                input.spellcheck = false;
-                input.classList.add("form-control", "inputEdit");
-                // input.setAttribute('id', 'validationFormCheck1');
-                input.ariaLabel = "Habit name";
-                input.value = text;
-
-                this.textContent = "";
-                this.appendChild(input);
-                input.focus();
-                let newText;
-                // FIXME da sie ustawic input pusty  trzeba jakos poklikac dziwnie xd, po f5 dziala normalnie - resetuje sie  do poprzedniego name
-
-                const isEmpty = (str) => !str.trim().length;
-                input.addEventListener("keydown", function (event) {
-                    if (event.key === "Escape" || event.key === "Enter")
-                        input.blur();
-                });
-                input.addEventListener("blur", function () {
-                    newText = input.value;
-                    //PODSTAwowa walidacja//TODO POLEPSZYC WALIDACJE I WYSWIETLIC KOMUNIKAT W PRZYPADKU CHUJOWEGO INPUTU
-                    if (
-                        newText.length > 2 &&
-                        newText.length < 20 &&
-                        newText !== "" &&
-                        !isEmpty(newText)
-                    ) {
-                        this.parentElement.textContent = newText;
-                        updateName(taskID, newText);
-                    } else {
-                        console.log("za krórtki lub za długi tekst");
-                        this.parentElement.textContent = text;
-                    }
-                });
-            });
+        let tasknames = document.querySelectorAll(".task-name");
+        tasknames.forEach(function (taskname) {
+            taskname.removeEventListener("click", taskNameChg);
+        });
+        tasknames.forEach(function (taskname) {
+            taskname.addEventListener("click", taskNameChg);
         });
     };
-    const addNewPlan = function () {
-        console.log(planQuant);
 
+    const addNewPlan = function () {
+        let newPlanQuant = planQuant;
         const btn = document.querySelector("#navAddPlan");
         const mainTb = document.querySelector(".upperTbody");
         btn.addEventListener("click", function () {
-            //TODO append oncl
-            let tr = document.createElement("tr");
-            let th = document.createElement("th");
-            let td = document.createElement("td");
-            let div = document.createElement("div");
-            let input = document.createElement("input");
-            //
-            tr.classList.add("trUpper");
-
-            th.setAttribute("scope", "col");
-            th.classList.add("w-15", "text-nowrap", "planLicz", "task-name");
-            th.innerText = "testowy th";
-            //td.classList.add("current-day");
-
-            div.classList.add("form-check", "checkbox-xl");
-
-            input.classList.add("form-check-input");
-            input.setAttribute("type", "checkbox");
-
-            mainTb.appendChild(tr);
-            tr.appendChild(th);
-
-            for (let i = 0; i < 30; i++) {
+            if (planQuant < 10) {
+                //TODO append oncl
+                let tr = document.createElement("tr");
+                let th = document.createElement("th");
                 let td = document.createElement("td");
                 let div = document.createElement("div");
                 let input = document.createElement("input");
+                //
+                tr.classList.add("trUpper");
+                th.setAttribute("scope", "col"); //TODO dodac id
+                th.classList.add(
+                    "w-15",
+                    "text-nowrap",
+                    "planLicz",
+                    "task-name"
+                );
+                th.innerText = "testowy th"; //TODO zmienic default nazwe
+                //td.classList.add("current-day");
 
                 div.classList.add("form-check", "checkbox-xl");
 
                 input.classList.add("form-check-input");
                 input.setAttribute("type", "checkbox");
 
-                tr.appendChild(td);
-                td.appendChild(div);
-                div.appendChild(input);
+                mainTb.appendChild(tr);
+                tr.appendChild(th);
+                planQuant++;
+                th.setAttribute("id", "plan" + planQuant);
+                let addPlan = 1; // ADD
+
+                $.ajax({
+                    type: "POST",
+                    url: "/planQuantAdj",
+                    data: {
+                        _token: csrfToken,
+                        planQuant: planQuant,
+                        goalId: goalId,
+                        addPlan: addPlan,
+                    },
+                    success: function (response2) {
+                        console.log(response2);
+                    },
+                    error: function (error) {
+                        console.error("Error sending data: " + error);
+                    },
+                });
+
+                for (let i = 1; i < userDataDINMO + 1; i++) {
+                    let td = document.createElement("td");
+                    let div = document.createElement("div");
+                    let input = document.createElement("input");
+
+                    div.classList.add("form-check", "checkbox-xl");
+
+                    input.classList.add("form-check-input", "value" + i);
+                    input.setAttribute("type", "checkbox");
+                    input.setAttribute("id", "plan" + planQuant + ".val" + i);
+
+                    tr.appendChild(td);
+                    td.appendChild(div);
+                    div.appendChild(input);
+                }
+                console.log(planQuant);
+                progressCounter(tableLength);
+            } else {
+                alert("you ve reached max amm of plan sizes"); //TODO make proper alert
             }
+            tasknameUpdate();
+        });
+    };
+    const removePlan = function () {
+        const btn = document.querySelector("#navRemovePlan");
+        const table = document.getElementById("mainTable");
+        console.log(planQuant);
+
+        let removePlan = 1; // REMOVE
+        btn.addEventListener("click", function () {
+            let lastRow = table.rows[table.rows.length - 1];
+            if (lastRow) table.deleteRow(table.rows.length - 3);
+
+            planQuant--;
+            $.ajax({
+                type: "POST",
+                url: "/planQuantAdj",
+                data: {
+                    _token: csrfToken,
+                    planQuant: planQuant,
+                    goalId: goalId,
+                    removePlan: removePlan,
+                },
+                success: function (response) {
+                    // console.log(
+                    //     "Plan quant adjusted (removed), newplanquant: " +
+                    //         planQuant
+                    // );
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.error("Error sending data: " + error);
+                },
+            });
+            progressCounter(tableLength);
         });
     };
     addNewPlan();
+    removePlan();
     tasknameUpdate();
 });
