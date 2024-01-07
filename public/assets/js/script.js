@@ -33,20 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
     progressCounter(tableLength); //execute żeby przy załadowaniu strony zaaktualizować progress wzgledem danych z bazydanych
-    // const removeClass = function (cell) {
-    //     const colorArr = [
-    //         'color20',
-    //         'color2040',
-    //         'color4060',
-    //         'color6080',
-    //         'color8010',
-    //     ];
-    //     for (let i = 0; i < colorArr.length; i++) {
-    //         if (cell.classList.contains(colorArr[i])) {
-    //             cell.classList.remove(colorArr[i]);
-    //         }
-    //     }
-    // };
     const progressColorChange = function () {
         let newColor;
         let progCell = [];
@@ -275,6 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     div.appendChild(input);
                 }
                 console.log(planQuant);
+                colorDataMode(); // INFO do wyjebania
                 progressCounter(tableLength);
             } else {
                 alert("you ve reached max amm of plan sizes"); //TODO make proper alert
@@ -315,6 +302,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             progressCounter(tableLength);
         });
+    };
+    const colorDataMode = function () {
+        const body = document.querySelector("body");
+        body.setAttribute("data-mode", "styl");
     };
     addNewPlan();
     removePlan();

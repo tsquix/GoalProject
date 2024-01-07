@@ -17,6 +17,13 @@
         
 </head>
   <body> 
+    <script>
+    // Pobieramy element <body>
+    const bodyElement = document.body;
+
+    // Dodajemy atrybut data-mode z wartością "default"
+    bodyElement.setAttribute("data-mode", "styl");
+</script>
     @livewire('navigation-menu')
             <!-- Page Heading -->
             @if (isset($header))

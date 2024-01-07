@@ -126,7 +126,7 @@ class WebsiteController extends Controller
             $planxIDs["plan$i"] = $planxID;
         }
         $planWS = ['planwek', 'planspec']; 
-        // PRZYKLADOWY SHIT DATA
+        // PRZYKLADOWY SHIT DATA// za duzo razy //TODO ustawic jakies przykladowe insertowane wartosci
             $ExamplePlanNameswek = ['wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'wake up early(7am)', 'exercise', 'shower', 'self care', 'healthy breakfast', 'read a book', 'wake up early(7am)', 'exercise', 'shower', 'self care' ];
             for ($x = 0; $x <= 1; $x++){
                 for ($i = 1; $i <= 5; $i++) //INFO: planspec/wek 5 ma ... puste - po to warunki
