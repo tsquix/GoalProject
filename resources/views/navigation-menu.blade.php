@@ -19,35 +19,54 @@
                    <x-nav-link href="{{ route('goal') }}" :active="request()->routeIs('goal')">
                         {{ __('goal') }}
                     </x-nav-link>
-                    
+    
                     @if(str_starts_with(request()->path(), 'goal'))
-                        
+                    <!-- TODO po zmianie nazwy goal/ trzeba tu zmienic -->
+
                     <x-nav-link>
-                        <button x-data="{ open: false }" @click="open = !open" type="button" class="inline-flex items-center px-3 py-2  border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150 relative">
+                        <button x-data="{ open: false }" @click="open = !open" type="button" class="inline-flex items-center px-1 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150 relative">
                             {{ __('Customize') }}
                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
 
-                            <div x-show="open" @click.away="open = false" class="absolute origin-top left-0 w-48 bg-white rounded-md shadow-lg" style="top: 4.1rem; z-index: 100; left: -2rem;">
-                                <!-- //FIXME odstęp displayu zmniejszyc -->
+                            <div x-show="open" @click.away="open = false" class="absolute origin-top left-0 w-48 bg-white rounded-md shadow-lg" style="top: 48px;z-index: 100;right: -60px;left: -55px;">
                                 <div class="py-1">
-                                    <div class="block px-4 py-2 text-sm text-gray-700 nohover" id="navAddPlan">
-                                                    {{ __('Add new plan') }}
-                                                </div>
-                                    <div class="block px-4 py-2 text-sm text-red-500 nohover" id="navRemovePlan">
-                                                    {{ __('Delete plan') }}
-                                                </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="navAddPlan">
+                                        {{ __('Add new plan') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-red-500 grayhover" id="navRemovePlan">
+                                        {{ __('Delete plan') }}
+                                    </div>
                                 </div>
-                                    
-                                
+                            </div>
+                        </button>
+                    </x-nav-link>
+                    <x-nav-link :stylesButton="true">
+                        <button x-data="{ open: false }" @click="open = !open" type="button" class="inline-flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150 relative {{ $stylesButton->additionalClass ?? '' }}">
+                            {{ __('Styles') }}
+                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+
+                            <div x-show="open" @click.away="open = false" class="absolute origin-top left-0 w-48 bg-white rounded-md shadow-lg" style="top: 48px;z-index: 100;right: -60px;left: -55px;">
+
+                                <div class="py-1">
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
+                                        {{ __('first style') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
+                                        {{ __('first style') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
+                                        {{ __('third style') }}
+                                    </div>
+                                </div>
                             </div>
                         </button>
                     </x-nav-link>
                     @endif
 
-
-               
                     <!-- End Dropdown Link -->
                    
                   

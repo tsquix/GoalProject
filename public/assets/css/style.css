@@ -209,9 +209,10 @@
 .hidden {
     display: none;
 }
-.nohover {
-    border: none !important;
-    transition-property: none !important;
-    transition-timing-function: initial !important;
-    transition-duration: initial !important;
+.mgl-0 {
+    margin-left: 5px !important;
+}
+.grayhover:hover {
+    background-color: #f1f3f5;
+    transition: 0.25s;
 }
