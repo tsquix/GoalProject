@@ -22,7 +22,7 @@
     const bodyElement = document.body;
 
     // Dodajemy atrybut data-mode z wartością "default"
-    bodyElement.setAttribute("data-mode", "styl");
+    bodyElement.setAttribute("data-mode", "style6");
 </script>
     @livewire('navigation-menu')
             <!-- Page Heading -->
@@ -37,7 +37,7 @@
             <div class="table-responsive">
             @include ('frontend.weekdays')
          @include('frontend.goaldata')
-          <p>Wartość id: {{ $id }}</p>
+          <p>User id: {{ $id }}</p>
 
    
        @include('frontend.progress')

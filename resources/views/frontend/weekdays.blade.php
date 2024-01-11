@@ -12,7 +12,7 @@ $numberOfDays = cal_days_in_month(CAL_GREGORIAN, $month, $year );
   // $queryCheckDinMO = "SELECT daysInMo FROM userstable WHERE userID = $user_id and userTableID = $id";
   // $resultCheckDinMO = mysqli_query($con, $queryCheckDinMO);
   // $row3 = mysqli_fetch_array($resultCheckDinMO);
-  echo "$userDataDINMO";//INFO do wyjebania potem
+  echo "ilość dni w miesiacu ".$userDataDINMO."";//INFO do wyjebania potem
 
     // Funkcja pobierająca nazwę dnia tygodnia na podstawie jego numeru
   if (!function_exists('getDayNm')) {
@@ -25,6 +25,7 @@ $numberOfDays = cal_days_in_month(CAL_GREGORIAN, $month, $year );
  // Wygenerowanie listy dni
 echo "<div class='table-container container-fluid'>
 <table id='mainTable' class='table table-bordered table-sm'>";
+
 
 // <table id='mainTable' class='table table-bordered table-info table-sm'>"; INFO stary styl
 // echo "<thead id='upperThead' class='thead-light' style='position: sticky; top: 0; z-index: 1;'><tr>

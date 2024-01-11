@@ -52,14 +52,23 @@
                             <div x-show="open" @click.away="open = false" class="absolute origin-top left-0 w-48 bg-white rounded-md shadow-lg" style="top: 48px;z-index: 100;right: -60px;left: -55px;">
 
                                 <div class="py-1">
-                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
-                                        {{ __('first style') }}
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style1">
+                                        {{ __('Default') }}
                                     </div>
-                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
-                                        {{ __('first style') }}
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style2">
+                                        {{ __('Arctic') }}
                                     </div>
-                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="">
-                                        {{ __('third style') }}
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style3">
+                                        {{ __('Mellow') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style4">
+                                        {{ __('Olive') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style5">
+                                        {{ __('Rose') }}
+                                    </div>
+                                    <div class="block px-4 py-2 text-sm text-gray-700 grayhover" id="Style6">
+                                        {{ __('Harmony') }}
                                     </div>
                                 </div>
                             </div>

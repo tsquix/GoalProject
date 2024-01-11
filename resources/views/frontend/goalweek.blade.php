@@ -10,7 +10,7 @@ if ($resultCheck) {
     if (mysqli_num_rows($resultCheck) > 0){
     for($x = 0; $x<=1; $x++){
     echo "
-            <table class='table  table-bordered table-container lower-tables '>
+            <table class='table table-bordered table-container lower-tables '>
                 <thead>
                     <tr>
                         <th scope='col'>#</th>

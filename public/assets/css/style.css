@@ -110,7 +110,7 @@
     font-weight: 550;
 }
 
-[data-mode="snowy"] {
+[data-mode="style2"] {
     --br-color: #82888b;
     --bg-color1: #f9fefc;
     --bg-color2: #e1faee;
@@ -123,11 +123,11 @@
     --bg-color9: #5fc5de;
     --bg-color10: #f9fefc;
     --bg-color11: #edf7f3;
-    --bg-color-input-checked: #646569;
+    --bg-color-input-checked: #535457;
 }
-[data-mode="styl"] {
+[data-mode="style1"] {
     --br-color: rgb(63, 60, 60);
-    --bg-color1: #fdfbf4;
+    --bg-color1: #fcf7e9;
 
     --bg-color2: #f4e2b4;
     --bg-color3: #eac873;
@@ -140,7 +140,76 @@
 
     --bg-color10: #fcf7e9;
     --bg-color11: #f7eac9;
-    --bg-color-input-checked: #646569;
+    --bg-color-input-checked: #414143;
+}
+[data-mode="style3"] {
+    --br-color: rgb(63, 60, 60);
+    --bg-color1: #fdfbf4;
+
+    --bg-color2: #ccc7ff;
+    --bg-color3: #bcb6ff;
+    --bg-color4: #c7e8ff;
+    --bg-color5: #b8e1ff;
+    --bg-color6: #c1fff9;
+    --bg-color7: #a9fff7;
+    --bg-color8: #b2fcc2;
+    --bg-color9: #94fbab;
+
+    --bg-color10: #e8fef8;
+    --bg-color11: #c2fced;
+    --bg-color-input-checked: #414143;
+    /* --bg-color-input-checked: #646569; */
+}
+[data-mode="style4"] {
+    --br-color: rgb(63, 60, 60);
+    --bg-color1: #848784;
+
+    --bg-color2: #54ec52;
+    --bg-color3: #19c316;
+    --bg-color4: #42c331;
+    --bg-color5: #349926;
+    --bg-color6: #489d4d;
+    --bg-color7: #37773a;
+    --bg-color8: #848784;
+    --bg-color9: #5c5e5c;
+
+    --bg-color10: #e4e4e4;
+    --bg-color11: #adafad;
+    --bg-color-input-checked: #383636;
+}
+[data-mode="style5"] {
+    --br-color: rgb(63, 60, 60);
+    --bg-color1: #fdf1f4;
+
+    --bg-color2: #ffdbe1;
+    --bg-color3: #ffccd5;
+    --bg-color4: #ffafbe;
+    --bg-color5: #ff8fa3;
+    --bg-color6: #ff8097;
+    --bg-color7: #ff4d6d;
+    --bg-color8: #ea4876;
+    --bg-color9: #e5245b;
+
+    --bg-color10: #fdf1f4;
+    --bg-color11: #ffe2e8;
+    --bg-color-input-checked: #414143;
+}
+[data-mode="style6"] {
+    --br-color: rgb(63, 60, 60);
+    --bg-color1: #f4ebf6;
+
+    --bg-color2: #eeefa2;
+    --bg-color3: #e9eb87;
+    --bg-color4: #ab9e92;
+    --bg-color5: #938274;
+    --bg-color6: #9c7e9c;
+    --bg-color7: #7b5e7b;
+    --bg-color8: #6d0882;
+    --bg-color9: #520662;
+
+    --bg-color10: #f4ebf6;
+    --bg-color11: #f2e0f6;
+    --bg-color-input-checked: #2d2d2e;
 }
 
 /* HABIT NAME PO LEWO */

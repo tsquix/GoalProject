@@ -261,7 +261,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     div.appendChild(input);
                 }
                 console.log(planQuant);
-                colorDataMode(); // INFO do wyjebania
                 progressCounter(tableLength);
             } else {
                 alert("you ve reached max amm of plan sizes"); //TODO make proper alert
@@ -303,11 +302,41 @@ document.addEventListener("DOMContentLoaded", function () {
             progressCounter(tableLength);
         });
     };
-    const colorDataMode = function () {
-        const body = document.querySelector("body");
-        body.setAttribute("data-mode", "styl");
+    // const colorDataMode = function () {
+    //     const body = document.querySelector("body");
+    //     body.setAttribute("data-mode", "styl");
+    // };
+
+    const styleChg = function () {
+        const bodyElement = document.body;
+        const BtnStyle1 = document.querySelector("#Style1");
+        const BtnStyle2 = document.querySelector("#Style2");
+        const BtnStyle3 = document.querySelector("#Style3");
+        const BtnStyle4 = document.querySelector("#Style4");
+        const BtnStyle5 = document.querySelector("#Style5");
+        const BtnStyle6 = document.querySelector("#Style6");
+        BtnStyle1.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style1");
+            console.log("xx");
+        });
+        BtnStyle2.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style2");
+        });
+        BtnStyle3.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style3");
+        });
+        BtnStyle4.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style4");
+        });
+        BtnStyle5.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style5");
+        });
+        BtnStyle6.addEventListener("click", function () {
+            bodyElement.setAttribute("data-mode", "style6");
+        });
     };
     addNewPlan();
     removePlan();
     tasknameUpdate();
+    styleChg();
 });
