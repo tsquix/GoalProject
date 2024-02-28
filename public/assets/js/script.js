@@ -316,8 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const BtnStyle5 = document.querySelector("#Style5");
         const BtnStyle6 = document.querySelector("#Style6");
         BtnStyle1.addEventListener("click", function () {
-            bodyElement.setAttribute("data-mode", "style1");
-            console.log("xx");
+            bodyElement.setAttribute("data-mode", "default");
         });
         BtnStyle2.addEventListener("click", function () {
             bodyElement.setAttribute("data-mode", "style2");

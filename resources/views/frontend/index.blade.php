@@ -22,7 +22,7 @@
     const bodyElement = document.body;
 
     // Dodajemy atrybut data-mode z wartością "default"
-    bodyElement.setAttribute("data-mode", "style6");
+    bodyElement.setAttribute("data-mode", "default");
 </script>
     @livewire('navigation-menu')
             <!-- Page Heading -->

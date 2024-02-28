@@ -125,7 +125,7 @@
     --bg-color11: #edf7f3;
     --bg-color-input-checked: #535457;
 }
-[data-mode="style1"] {
+[data-mode="default"] {
     --br-color: rgb(63, 60, 60);
     --bg-color1: #fcf7e9;
 
@@ -162,7 +162,7 @@
 }
 [data-mode="style4"] {
     --br-color: rgb(63, 60, 60);
-    --bg-color1: #848784;
+    --bg-color1: #fdfbf4;
 
     --bg-color2: #54ec52;
     --bg-color3: #19c316;
