@@ -271,7 +271,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const removePlan = function () {
         const btn = document.querySelector("#navRemovePlan");
         const table = document.getElementById("mainTable");
-        console.log(planQuant);
 
         let removePlan = 1; // REMOVE
         btn.addEventListener("click", function () {
@@ -302,11 +301,17 @@ document.addEventListener("DOMContentLoaded", function () {
             progressCounter(tableLength);
         });
     };
-    // const colorDataMode = function () {
-    //     const body = document.querySelector("body");
-    //     body.setAttribute("data-mode", "styl");
+    // const highlightCurDay = function () { TODO zczytać bgc i przy pomocy .Lighten() podswietlic kolumne
+    //     let today = new Date();
+    //     let currentDay = today.getDate() + 1;
+    //     let table = document.getElementById("mainTable");
+    //     let cellsInColumn = table.querySelectorAll(
+    //         "tr td:nth-child(" + currentDay + ")"
+    //     );
+    //     cellsInColumn.forEach(function (cell) {
+    //         cell.classList.add("highlighted-column");
+    //     });
     // };
-
     const styleChg = function () {
         const bodyElement = document.body;
         const BtnStyle1 = document.querySelector("#Style1");
@@ -338,4 +343,5 @@ document.addEventListener("DOMContentLoaded", function () {
     removePlan();
     tasknameUpdate();
     styleChg();
+    highlightCurDay();
 });
