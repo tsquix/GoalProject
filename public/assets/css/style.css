@@ -148,12 +148,12 @@
     --br-color: rgb(63, 60, 60);
     --bg-color1: #fdfbf4;
 
-    --bg-color2: #54ec52;
-    --bg-color3: #19c316;
-    --bg-color4: #42c331;
-    --bg-color5: #349926;
-    --bg-color6: #489d4d;
-    --bg-color7: #37773a;
+    --bg-color2: #54ec52 !important;
+    --bg-color3: #19c316 !important;
+    --bg-color4: #42c331 !important;
+    --bg-color5: #349926 !important;
+    --bg-color6: #489d4d !important;
+    --bg-color7: #37773a !important;
     --bg-color8: #848784;
     --bg-color9: #5c5e5c;
 
@@ -202,43 +202,43 @@
 }
 #mainTable tbody:not(.lowerTbody) th:first-child,
 #mainTable tbody:not(.lowerTbody) td:first-child {
-    background-color: var(--bg-color1);
+    background-color: var(--bg-color1) !important;
 }
 
 /* 1-7  1WEK*/
 .upperTbody th:nth-child(n + 2):nth-child(-n + 8),
 .upperTbody td:nth-child(n + 2):nth-child(-n + 8) {
-    background-color: var(--bg-color2);
+    background-color: var(--bg-color2) !important;
 }
 .lower-tables tr .week1,
 #upperThead tr th:nth-child(n + 2):nth-child(-n + 8) {
-    background-color: var(--bg-color3);
+    background-color: var(--bg-color3) !important;
 }
 
 /* 8-14  2WEK*/
 .upperTbody th:nth-child(n + 9):nth-child(-n + 15),
 .upperTbody td:nth-child(n + 9):nth-child(-n + 15) {
-    background-color: var(--bg-color4);
+    background-color: var(--bg-color4) !important;
 }
 .lower-tables tr .week2,
 #upperThead tr th:nth-child(n + 9):nth-child(-n + 15) {
-    background-color: var(--bg-color5);
+    background-color: var(--bg-color5) !important;
 }
 
 /* 15-21  3WEK*/
 .upperTbody th:nth-child(n + 16):nth-child(-n + 22),
 .upperTbody td:nth-child(n + 16):nth-child(-n + 22) {
-    background-color: var(--bg-color6);
+    background-color: var(--bg-color6) !important;
 }
 .lower-tables tr .week3,
 #upperThead tr th:nth-child(n + 16):nth-child(-n + 22) {
-    background-color: var(--bg-color7);
+    background-color: var(--bg-color7) !important;
 }
 
 /* 22-28  4WEK*/
 .upperTbody th:nth-child(n + 23):nth-child(-n + 29),
 .upperTbody td:nth-child(n + 23):nth-child(-n + 29) {
-    background-color: var(--bg-color8);
+    background-color: var(--bg-color8) !important;
 }
 .lower-tables tr .week4,
 #upperThead tr th:nth-child(n + 23):nth-child(-n + 29) {

@@ -36,7 +36,7 @@ echo "<thead id='upperThead' class='' style='position: sticky; top: 0; z-index: 
 //wyswietl numery dni tygodnia
 for ($day = 1; $day <= $userDataDINMO; $day++) {
       $dayOfWeek = date('w', strtotime("$year-$month-$day"));
-       echo "<th scope='col'>" . getDayNm($dayOfWeek) . "</th>";
+       echo "<th scope='col col". $day ."'>" . getDayNm($dayOfWeek) . "</th>";
     }
 echo "</tr> </thead><tbody class='upperTbody'>";
 

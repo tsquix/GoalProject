@@ -301,17 +301,44 @@ document.addEventListener("DOMContentLoaded", function () {
             progressCounter(tableLength);
         });
     };
-    // const highlightCurDay = function () { TODO zczytać bgc i przy pomocy .Lighten() podswietlic kolumne
-    //     let today = new Date();
-    //     let currentDay = today.getDate() + 1;
-    //     let table = document.getElementById("mainTable");
-    //     let cellsInColumn = table.querySelectorAll(
-    //         "tr td:nth-child(" + currentDay + ")"
-    //     );
-    //     cellsInColumn.forEach(function (cell) {
-    //         cell.classList.add("highlighted-column");
-    //     });
-    // };
+    const highlightCurDay = function () {
+        //TODO zczytać bgc i przy pomocy .Lighten() podswietlic kolumne
+        let today = new Date();
+        let currentDay = today.getDate() + 1;
+        let table = document.getElementById("mainTable");
+
+        let cellsInColumn = table.querySelectorAll(
+            "tr td:nth-child(" + currentDay + ")"
+        );
+        let headerCell = table.querySelector(
+            "tr th:nth-child(" + currentDay + ")"
+        );
+        let headerCells = table.querySelectorAll(
+            "tr th:nth-child(" + currentDay + ")"
+        );
+        function color(element) {
+            //INFO funkcja zwracająca jasniejszy kolor nie uzytkuje jej tutaj moze siep przydac
+            let currBgc = tinycolor(
+                window.getComputedStyle(element).backgroundColor
+            );
+            let newColor = currBgc.lighten(8).toString();
+            return newColor;
+        }
+        // let newColor = color(headerCell);
+        // headerCell.style.backgroundColor = newColor;
+        headerCell.style.border = "2px solid black";
+        headerCell.style.filter = "brightness(1.25)";
+
+        cellsInColumn.forEach(function (cell) {
+            // nadanie podswietlenia/stylu wszystkim komórkom
+            cell.style.border = "2px solid black";
+            cell.style.filter = "brightness(1.25)";
+        });
+        headerCells.forEach(function (hcell) {
+            // nadanie stylu borderowi z górnego th oraz dolnego
+            hcell.style.border = "2px solid black";
+        });
+    };
     const styleChg = function () {
         const bodyElement = document.body;
         const BtnStyle1 = document.querySelector("#Style1");
@@ -338,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
         BtnStyle6.addEventListener("click", function () {
             bodyElement.setAttribute("data-mode", "style6");
         });
-    };
+    }; //TODO zrobic ajax przeslanie data-mode do bazy danych
     addNewPlan();
     removePlan();
     tasknameUpdate();
